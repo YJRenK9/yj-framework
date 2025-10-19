@@ -1,0 +1,816 @@
+/* -------------------------------------------------------- 
+
+TABLE OF CONTENTS
+
+# GLOBAL
+    # DEFINE GLOBAL VARIABLES (CUSTOM PROPERTIES)
+    # SET GLOBAL VARIABLES (CUSTOM PROPERTIES)
+    # GLOBAL RESETS
+    # SET GLOBAL COLORS
+    # SET GLOBAL TYPOGRAPHY
+        # HEADINGS
+        # LINKS
+        # PARAGRAPHS
+    # GLOBAL MEDIA (images, video, svg)
+    # GLOBAL HELPERS
+        # ENABLE SMOOTH SCROLLING
+
+# LAYOUT
+    # MEDIA QUERIES (w/ RESPONSIVE TYPOGRAPHY)
+    # CONTAINER
+    # GRID (ROWS & COLUMNS)
+    # CARDS
+
+# SITE STRUCTURE
+    # HEADER
+        # SITE LOGO
+        # SITE NAV
+            # TOGGLE-NAV
+    # MAIN
+        # SECTIONS
+    # FOOTER
+
+# UI COMPONENTS
+    # CARDS
+    # BUTTONS
+    # HR (HORIZONTAL RULE)
+    # SWIPER SLIDER (CAROUSEL)
+
+# CUSTOM SITE STYLING
+    # BODY GRID LAYOUT SYSTEM (header, main, and footer)
+    # STICKYBOX
+
+# ANIMATION
+    # SMOOTH SCROLLING
+
+# CUSTOM STYLING
+    # BODY GRID LAYOUT SYSTEM (header, main, and footer)
+
+-------------------------------------------------------- */
+
+/* -----------------------------------------------------
+                        GLOBALS
+-------------------------------------------------------- */
+
+/* SET GLOBAL VARIABLES */
+
+:root {
+
+    /* DEFINE BASE COLORS */
+    --color-white: #ffffff;
+    --color-black: #000000;
+    /* black with 80% opacity */
+    --color-black-80: rgb(0 0 0 / .8);
+
+    --color-grey-100: #f8f9fa;
+    --color-grey-200: rgb(0 0 0 / .2);
+
+    --color-light-blue: #add8e6;
+    --color-aqua: #00ffff;
+    --color-blue: #0000ff;
+    --color-dark-blue: #00004d;
+    
+    --color-green-100: #d4edda;
+    --color-green-200: #a3e4b0;
+    --color-green-300: #7ad394;
+    --color-green-400: #52c878;
+    --color-green-800: #28a745;
+    --color-green-900: #1e7e34;
+    --color-green-1000: #006818;
+
+    --color-rubine-red: #D10056;
+    --color-yellow: #ffff00;
+    --color-teal: #008080;
+
+    /* DEFINE SEMANTIC COLORS */
+    --color-body-background: var(--color-light-blue);
+    --color-body-text: var(--color-dark-blue);
+
+    --color-primary: var(--color-blue);
+    --color-primary-dark: var(--color-dark-blue);
+    --color-secondary: var(--color-green-800);
+
+    --color-header-background: var(--color-rubine-red);
+    --color-section-background: var(--color-yellow);
+    --color-footer-background: var(--color-teal);
+
+    /* BORDER */
+    --color-border: var(--color-black-80);
+    --border-radius: 8px;
+    --border-thickness: .5px;
+
+    /* BASE TYPOGRAPHY */
+    --font-body: system-ui, Helvetica, Arial, sans-serif;
+    --font-headings: Georgia, serif;
+
+    /* SIZING UNITS */
+    --container-width: 1100px;
+    --unit-2xsmall: 0.25rem;
+    --unit-xsmall: 0.5rem;
+    --unit-small: 1rem;
+    --unit-medium: 1.5rem;
+    --unit-large: 2rem;
+    --unit-ex-large: 4rem;
+    --unit-2ex-large: 6rem;
+    --unit-3ex-large: 8rem;
+    --container-width: 1100px;
+}
+
+/* main css goes here */
+/* SET GLOBAL VARIABLES */
+body {
+    background-color: var(--color-body-background);
+    color: var(--color-body-text);
+    font-family: var(--font-body);
+    font-size: 100%;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-headings);
+    /* margin-top: var(--unit-medium); */
+    /* margin-bottom: var(--unit-small); */
+    /* add support for text wrap balance */
+    text-wrap: balance;
+}
+
+/* GLOBAL RESETS */
+
+/* Remove the default 8px margin on body */
+body {
+
+    margin: 0;
+}
+/* to fix overflow word break */
+body > * {
+    min-width: 0;
+}
+* {
+    box-sizing: border-box;
+}
+
+/* ----------------------------------------
+                LAYOUT
+---------------------------------------- */
+
+/* CONTAINER */
+.container {
+    max-width: var(--container-width);
+    /* ways to center content besides using flex & justify-content */
+    /* margin: 0 auto; */
+    margin-inline: auto;
+    /* without this, the container will not have outside gap when shrinking the window */
+    padding-inline: var(--unit-small);
+    /* padding: 0 var(--unit-medium); */
+}
+
+/* GRID SYSTEM (12 column) */
+
+/* > * means select ALL direct (median) children (grandchildren doesn't count) */
+.row > * {
+    margin-block: var(--unit-small);
+}
+.row.demo > * {
+    /* Each column is 8.33% wide (100% / 12 columns)
+    width: 8.33%;
+    float: left;
+    padding: 0 var(--unit-small); */
+
+    background-color:#eee;
+    text-align: center;
+    padding: var(--unit-small);
+
+}
+/* min-width: 768px */
+
+@media (width >= 768px) {
+    .row {
+        display: grid;
+        /* repeats grid by 1/12th of the UI (grid system), 1fr means 1 of a fraction, 12 means 12 sections */
+        grid-template-columns: repeat(12, 1fr);
+        gap: var(--unit-small);
+    }
+
+    /* SEMANTIC COLUMNS */
+    /* auto is like filling in the end column-width? */
+    .one-half { grid-column: auto / span 6; }
+    .one-third { grid-column: span 4; }
+    .two-thirds { grid-column: auto / span 8; }
+    .one-fourth { grid-column: span 3; }
+    .three-fourths { grid-column: auto / span 9; }
+    /* .one-fifth { grid-column: span 2.4; } */
+    
+    /* SWAPPED */
+    .row.swapped > *:first-child { order: 2; }
+    .row.swapped > *:last-child { order: 1; }
+
+    /* center grid items */
+    .one-half.centered { grid-column-start: 4; }
+    .two-thirds.centered { grid-column-start: 3; }
+    /* .three-fourths.centered { grid-column-start: 3; } */
+
+    /* 12 COLUMN CLASS-BASED GRID SYSTEM */
+    .col-1 { grid-column: auto / span 1; }
+    .col-2 { grid-column: auto / span 2; }
+    .col-3 { grid-column: auto / span 3; }
+    .col-4 { grid-column: auto / span 4; }
+    .col-5 { grid-column: auto / span 5; }
+    .col-6 { grid-column: auto / span 6; }
+    .col-7 { grid-column: auto / span 7; }
+    .col-8 { grid-column: auto / span 8; }
+    .col-9 { grid-column: auto / span 9; }
+    .col-10 { grid-column: auto / span 10; }
+    .col-11 { grid-column: auto / span 11; }
+    .col-12 { grid-column: auto / span 12; }
+
+    /* PUSHED */
+    .push-1 { grid-column-start: 2; }
+    .push-2 { grid-column-start: 3; }
+    .push-3 { grid-column-start: 4; }
+    .push-4 { grid-column-start: 5; }
+    .push-5 { grid-column-start: 6; }
+    .push-6 { grid-column-start: 7; }
+    .push-7 { grid-column-start: 8; }
+    .push-8 { grid-column-start: 9; }
+    .push-9 { grid-column-start: 10; }
+    .push-10 { grid-column-start: 11; }
+    .push-11 { grid-column-start: 12; }
+    .push-12 { grid-column-start: 13; }
+}
+
+/* SET GLOBAL TYPOGRAPHY */
+
+/* --------------------------------------------------
+                        SITE STRUCTURE
+-------------------------------------------------- */
+
+.site-header {
+    /* display logo on left and nav on right */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-rubine-red);
+    /* border-bottom: var(--border-thickness) solid var(--color-border);*/
+    padding: var(--unit-small); 
+    /* margin-bottom: var(--unit-medium); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    flex-wrap: wrap;
+}
+
+.site-header .logo, .site-footer {
+    display: flex;
+    align-items: center;
+    gap: var(--unit-small);
+    text-decoration: none;
+    color: var(--color-white);
+    /* font-weight: bold; */
+    /* font-size: 1.5rem; */
+}
+
+.site-header .logo svg {
+    /* remove the gap from a tag */
+    /* display: block; */
+    /* Chris Coyier's fix for gap inline blocks */
+    vertical-align: middle;
+    width: 50px;
+    height: auto;
+    min-width: 50px;
+    max-height: 50px;
+
+    /* display: block; */
+}
+
+.site-header h1 {
+    /* font-size: 1.5rem; */
+    margin: 0;
+}
+
+.site-header a, .site-footer a {
+    text-decoration: none;
+}
+
+/* do not attatch .site-header or else it'll show both nav and menuicon on mobile view */
+.site-nav ul {
+    display: flex;
+    /* justify-content: space-between; */
+    /* use gap if justify-content doesn't work */
+    gap: var(--unit-small);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.site-nav a {
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--color-grey-100);
+    padding: var(--unit-xsmall);
+}
+
+/* render header on top of hero */
+.site-header .on-top-of-hero {
+    position: absolute;
+    width: 100%;
+    /* top: var(--unit-small);
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    max-width: var(--container-width);
+    padding-inline: var(--unit-small);
+    z-index: 10; */
+}
+
+.site-header .on-top-of-hero + .site-main .hero-section {
+    /* add top padding to the hero section if the header is on top of it */
+    padding-block-start: calc(var(--unit-2ex-large) + var(--unit-medium));
+}
+
+.site-nav .menu-button {
+    position: relative;
+    background-color: transparent;
+    color: var(--color-white);
+    z-index: 100;
+    border: none;
+    padding: var(--unit-small);
+    /* border-radius: var(--border-radius); */
+    /* no need pointer because mobile doesn't feature mouse cursor */
+    /* cursor: pointer; */
+    /* transition: background-color 0.4s ease; */
+}
+
+.site-nav .menu-button:hover {
+    background-color: transparent;
+    color: var(--color-white);
+}
+
+/* put this here so the a:hover will work regardless of window size */
+.site-nav[data-menustate] a:hover {
+    transition: color 0.3s ease;
+    color: var(--color-aqua);
+}
+
+.site-main {
+    
+}
+
+.site-main > .hero-section {
+    background-color: var(--color-yellow)
+}
+
+.hero-section.site-footer:has(.container) {
+    padding-inline: 0;
+}
+
+.hero-section h1 {
+
+}
+
+section {
+    padding-block: var(--unit-large);
+}
+
+.site-footer {
+    background-color: var(--color-teal);
+    /* padding (top and bottom) (left and right) */
+    padding-block: var(--unit-2exl);
+    padding-inline: var(--unit-small);
+}
+
+/* .site-footer nav {
+    padding-left: -(var(--unit-large));
+} */
+
+.site-footer ul {
+    padding-left: 0;
+    line-height: 2;
+    list-style: none;
+}
+
+.site-footer a {
+    color: var(--color-white);
+}
+
+.site-footer a:hover {
+    color: var(--color-aqua);
+}
+
+/* remove footer padding if it has a container */
+.site-footer:has(.container) {
+    padding-inline: 0;
+}
+
+/* HEADINGS */
+
+a {
+    color: var(--color-primary);
+    text-decoration-color: var(--color-primary-dark);
+    text-underline-offset: .135em;
+    text-decoration-thickness: .05px;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-secondary);
+}
+
+/* limit the number of characters per line for all paragraphs */
+p {
+    max-inline-size: 75ch;
+}
+
+p, li {
+    /* remove widows? */
+    text-wrap: pretty;
+}
+
+/* li:hover {
+    color: var(--color-secondary);
+} */
+
+/* GLOBAL HELPERS */
+
+.text-centered {
+    text-align: center;
+}
+
+/* used to center the p tags if they're not properly centered */
+.text-centered p {
+    margin-inline: auto;
+}
+
+.hide-visually, 
+.visually-hidden,
+.screen-reader-only {
+    position: absolute !important;
+    top: -9999px;
+    left: -9999px;
+    /*height: 1px; 
+    width: 1px; 
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);  IE6, IE7 
+    clip: rect(1px 1px 1px 1px);
+    white-space: nowrap;  added line */
+}
+
+/* IMAGES (responsive)
+Responsive on small screens 
+Do not stretch too large (beyond the original) 
+on large screens
+*/
+
+img {
+    max-width: 100%;
+    /* Without height auto, the image will stretch downward */
+    height: auto;
+    /* border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+}
+
+/* -----------------------------------------------------
+                        UI COMPONENTS
+-------------------------------------------------------- */
+
+/* CARDS */
+
+.card {
+    display: inline-block;
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    border-width: var(--border-thickness);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: var(--unit-small);
+    margin: var(--unit-small);
+    transition: box-shadow 0.3s ease;
+}
+
+.color-swatch {
+    /* make sure local variables have that underscore after the -- */
+    --_swatch-color: var(--color-grey-100);
+    background-color: var(--_swatch-color);
+    width: 250px;
+    height: 250px;
+    border-radius: 8px;
+    margin: 8px;
+    border: 1px none var(--color-black-80);
+    display: inline-block;
+}
+
+.button {
+    background-color: var(--color-green-900);
+    color: var(--color-white);
+    padding: var(--unit-small);
+    margin-block: var(--unit-2xsmall);
+    display: inline-block;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: background-color 0.4s ease;
+}
+
+.button:hover {
+    background-color: var(--color-green-1000);
+    color: var(--color-white);
+}
+
+hr {
+    border: none;
+    border-bottom: var(--border-thickness) solid var(--color-border);
+    margin: var(--unit-xl) 0;
+}
+
+/* CODE BLOCKS */
+/* pre {
+    background-color: var(--color-grey-100);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    padding: var(--unit-small);
+    /* overflow-x: auto; useful but enables more navigation via horizontal scrolling */
+    /*white-space: pre-wrap;  Wraps long lines */
+    /* Breaks long words */
+    /* word-break: break-word;  */
+/* } */ 
+
+/* stylize code tags that are in pre tags */
+pre:has(code) {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: var(--color-grey-100);
+    border: 1px solid var(--color-border);
+    padding: 2px 4px;
+    border-radius: 4px;
+    white-space: pre-wrap;
+}
+
+/* SWIPER CSS STYLING */
+
+.swiper {
+/*  max-width to make it more responsive when shrinking the screen  */
+  /* max-width: 800px; */
+/*   border: 2px solid red; */
+  /* --swiper-navigation-size: 2rem; */
+  margin-inline: 4rem;
+  padding-block-end: 2rem;
+}
+.swiper-wrapper {
+/*   border: 2px solid green; */
+}
+.swiper-slide {
+/*   border: 2px solid red; */
+/*   background-color: orange; */
+  padding-inline: 4rem;
+  padding-block-end: 2rem;
+}
+
+
+/* ---------------------------------------------------------------------
+                            CUSTOM SITE STYLING
+----------------------------------------------------------------------*/
+
+body {
+    
+    background-color: var(--color-light-blue);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100svh;
+    /* svh = small viewport height */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#topA {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap: var(--unit-small);
+}
+
+#top {
+    font-family: var(--font-headings);
+    color: var(--color-white);
+    /* margin-inline: auto;
+    padding-left: var(--unit-xsmall);
+    padding-top: var(--unit-large); */
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    font-size: var(--unit-large);
+    font-weight: bold;
+}
+
+/* ??? */
+:target {
+    scroll-margin-top: var(--unit-medium);
+}
+
+.site-header .site-nav a {
+    /* ??? */
+    padding-block-start: calc(var(--unit-xsmall) + .1em);
+}
+
+.hero-section h1 {
+    /* 4em */
+    /* controls the size of the font depending on the vertical size of the window */
+    font-size: clamp(2.5em, 4vh, 4em);
+    /* remove unnecesarry margin */
+    margin-block: 0;
+
+}
+
+.hero-section p {
+    /* 45ch */
+    max-inline-size: 50ch;
+    text-wrap: balance;
+}
+
+@media (width >= 768px) {
+    .pagelayout-wrapper-twocolumn {
+        background-color: pink;
+        display: flex;
+        gap: var(--unit-large);
+    }
+
+    .pagesection-aside {
+        background-color: #00ffff;
+        width: 25%;
+    }
+
+    .pagesection-maincontent {
+        background-color: #a3e4b0;
+        width: 75%;
+    }
+
+    .site-nav .menu-button {
+        display: none;
+    }
+
+    .site-nav ul {
+        display: flex;
+    }
+
+    /* .site-nav[data-menustate] ul {
+        data-menustate: closed;
+    } */
+}
+@media (width < 768px) {
+    .site-nav .menu-button {
+        display: block;
+    }
+
+    .site-nav ul {
+        display: none;
+        
+    }
+
+    .site-nav[data-menustate] ul {
+        display: grid;
+        align-content: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 50;
+        width: 100svw;
+        height: 100%;
+        background: var(--color-rubine-red);
+        /* padding-inline: 3em; */
+        /* padding-block-start: 3em; */
+        /* margin-inline: auto; */
+        transition: translate 0.667s ease-in-out;
+    }
+
+    /* show the menu when data-menustate is open */
+    .site-nav[data-menustate="open"] ul {
+    /* menu does not move (menu shown must be its original position) */
+        animation: moveDown 0.667s forwards;
+    }
+
+    .site-nav .simple-navicon {
+        /* changing width and height of the svg's bounding box affects the "perfect" X */
+        /* width: 30px;
+        height: 30px; */
+
+        /* remove the bottom gap from the svg tag */
+        display: block;
+        
+        /* increase the clickable area */
+        /* padding: var(--unit-small); */
+    }
+
+    .site-nav[data-menustate] .simple-navicon rect {
+        transition: all 0.4s ease;
+        /* make the transform pivot center of the svg's bounding box */
+        transform-origin: center;
+        /* increase the width of the svg's bounding box */
+        width: 100%;
+        /* height: 4px; */
+    }
+
+    /* use "open" so tyhe menu icon doesn't stick upon scrolling within close state */
+    .site-nav[data-menustate="open"] .simple-navicon {
+        /* used to keep the menu icon on the similar position */
+        position: fixed;
+        /* make the position of the menu icon look nicer */
+        top: calc(var(--unit-small) + var(--unit-small));
+        right: calc(var(--unit-small) + var(--unit-small));
+    }
+
+    .site-nav[data-menustate="open"] svg.simple-navicon rect {
+        fill: var(--color-white);
+        /* transition: fill 0.3s ease; */
+    }
+
+    .site-nav[data-menustate="open"] .simple-navicon-top {
+        rotate: 45deg;
+        /* 10% of the rect width to the left, 20% of the rect height downward */
+        translate: -10% 20%;
+    }
+
+    .site-nav[data-menustate="open"] .simple-navicon-middle {
+        opacity: 0;
+    }
+
+    .site-nav[data-menustate="open"] .simple-navicon-bottom {
+        rotate: -45deg;
+        translate: -10% -25%;
+    }
+
+    .site-nav[data-menustate="closed"] ul {
+    /* menu moves 100% of its height upward */
+        animation: moveUp 0.667s forwards;
+    }
+    
+    @keyframes moveDown {
+        from {
+            translate: 0 -100%;
+        } 
+        to {
+            translate: 0 0;
+        }
+    }
+
+    @keyframes moveUp {
+        to {
+            translate: 0 -100%;
+        }
+    }
+}
+
+.stickybox {
+    position: sticky;
+    top: var(--unit-medium);
+}
+
+/* ---------------------------------------------------------------------
+                            ANIMATIONS
+----------------------------------------------------------------------*/
+
+.scale-and-fade-in {
+    /* border: red 5px solid;
+    animation: scale-and-fade-in 0.5s ease forwards;
+    opacity: 0;
+    transform: scale(0.95); */
+    scale: 0;
+    opacity: 0;
+    animation-name: scale-and-fade-in;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0,1,0,1);
+    animation-fill-mode: forwards;
+}
+
+@keyframes scale-and-fade-in {
+    /* 0% {
+        scale: 0;
+        opacity: 0;
+    } */
+    /* 80% {
+        scale: 1.05;
+    } */
+    To {
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+.slide-from-top-and-fade-in {
+    opacity: 0;
+    translate: 0 -20px;
+    animation-name: slide-from-top;
+    animation-duration: 4s;
+    animation-timing-function: cubic-bezier(0,1,0,1);
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-from-top {
+    To {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
