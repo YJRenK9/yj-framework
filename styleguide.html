@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Base | Documentation</title>
+    <title>YJ Framework | Style Guide</title>
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
@@ -19,7 +19,7 @@
                 </svg>
             </a>
             <!-- class="visually-hidden" -->
-            <h1 id="top">Simple Base</h1>
+            <h1 id="top">YJ Framework</h1>
         </div>
         <nav class="site-nav" data-menustate="closed">
             <button class="menu-button">
@@ -34,7 +34,7 @@
             </button>
             <ul class="text-centered">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="documentation.html">Documentation</a></li>
+                <li><a href="styleguide.html">Style Guide</a></li>
             </ul>
         </nav>
     </header>
@@ -43,7 +43,7 @@
     
         <section class="hero-section">
             <div class="container">
-                <h1>Documentation</h1>
+                <h1>Style Guide</h1>
             </div>
             
         </section>
@@ -62,6 +62,7 @@
                                 <li><a href="#media">Media</a></li>
                                 <li><a href="#helper-classes">Helper Classes</a></li>
                                 <li><a href="#grid-system">Grid System</a></li>
+                                <li><a href="#typeblock">Type Block</a></li>
                             </ul>
                         </div>
                     </div>
@@ -454,7 +455,7 @@
 
         <div class="row swapped">
             <div class="one-half">
-                <img src="images/PlaceholderImage.jpg"  width="2000" height="10000" alt="placeholder image">
+                <img src="images/PlaceholderImage.jpg"  width="2000" height="1000" alt="placeholder image">
             </div>
             <div class="one-half">
                 <h1>This is a Row with Text on the Left</h1>
@@ -464,7 +465,7 @@
 
         <div class="row">
             <div class="one-half">
-                <img src="images/PlaceholderImage.jpg"  width="2000" height="10000" alt="placeholder image">
+                <img src="images/PlaceholderImage.jpg"  width="2000" height="1000" alt="placeholder image">
             </div>
             <div class="one-half">
                 <h1>This is a Row with Text on the Right</h1>
@@ -474,7 +475,7 @@
 
         <div class="row centered">
             <div class="one-half centered">
-                <img src="images/PlaceholderImage.jpg"  width="2000" height="10000" alt="placeholder image">
+                <img src="images/PlaceholderImage.jpg"  width="2000" height="1000" alt="placeholder image">
                 <h1>This is a Row with Text on the Center</h1>
                 <p>This column is reading via the default normal view. Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dolorem nulla iusto, sed corrupti natus a officiis provident deserunt magni, facere accusantium ratione dolore voluptatem consequuntur. Asperiores iusto beatae cum!</p>
             </div>
@@ -482,12 +483,12 @@
 
         <div class="row">
             <div class="col-5 push-1">
-                <img src="images/PlaceholderImage.jpg"  width="2000" height="10000" alt="placeholder image">
+                <img src="images/PlaceholderImage.jpg"  width="2000" height="1000" alt="placeholder image">
                 <h1>This is a Row with Text on the Left using col-push and col-pull</h1>
                 <p>This column is reading via the default normal view. Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dolorem nulla iusto, sed corrupti natus a officiis provident deserunt magni, facere accusantium ratione dolore voluptatem consequuntur. Asperiores iusto beatae cum!</p>
             </div>
             <div class="col-5">
-                <img src="images/PlaceholderImage.jpg"  width="2000" height="10000" alt="placeholder image">
+                <img src="images/PlaceholderImage.jpg"  width="2000" height="1000" alt="placeholder image">
                 <h1>This is a Row with Text on the Left using col-push and col-pull</h1>
                 <p>This column is reading via the default normal view. Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dolorem nulla iusto, sed corrupti natus a officiis provident deserunt magni, facere accusantium ratione dolore voluptatem consequuntur. Asperiores iusto beatae cum!</p>
             </div>
@@ -498,10 +499,75 @@
             </div> -->
             
         </div>
+        <pre><code>
+            &lt;div class="row swapped"&gt;
+            &lt;div class="one-half"&gt;
+                &lt;img src="images/PlaceholderImage.jpg"  width="2000" height="1000" alt="placeholder image"&gt;
+            &lt;/div&gt;
+            &lt;div class="one-half"&gt;
+                &lt;h1&gt;This is a Row with Text on the Left&lt;/h1&gt;
+                &lt;p&gt;This column is reading via the default normal view. Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dolorem nulla iusto, sed corrupti natus a officiis provident deserunt magni, facere accusantium ratione dolore voluptatem consequuntur. Asperiores iusto beatae cum!&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="row"&gt;
+            &lt;div class="one-half"&gt;
+                &lt;img src="images/PlaceholderImage.jpg"  width="2000" height="1000" alt="placeholder image"&gt;
+            &lt;/div&gt;
+            &lt;div class="one-half"&gt;
+                &lt;h1&gt;This is a Row with Text on the Right&lt;/h1&gt;
+                &lt;p&gt;This column is reading via the default normal view. Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dolorem nulla iusto, sed corrupti natus a officiis provident deserunt magni, facere accusantium ratione dolore voluptatem consequuntur. Asperiores iusto beatae cum!&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="row centered"&gt;
+            &lt;div class="one-half centered"&gt;
+                &lt;img src="images/PlaceholderImage.jpg"  width="2000" height="1000" alt="placeholder image"&gt;
+                &lt;h1&gt;This is a Row with Text on the Center&lt;/h1&gt;
+                &lt;p&gt;This column is reading via the default normal view. Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dolorem nulla iusto, sed corrupti natus a officiis provident deserunt magni, facere accusantium ratione dolore voluptatem consequuntur. Asperiores iusto beatae cum!&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="row"&gt;
+            &lt;div class="col-5 push-1"&gt;
+                &lt;img src="images/PlaceholderImage.jpg"  width="2000" height="1000" alt="placeholder image"&gt;
+                &lt;h1&gt;This is a Row with Text on the Left using col-push and col-pull&lt;/h1&gt;
+                &lt;p&gt;This column is reading via the default normal view. Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dolorem nulla iusto, sed corrupti natus a officiis provident deserunt magni, facere accusantium ratione dolore voluptatem consequuntur. Asperiores iusto beatae cum!&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="col-5"&gt;
+                &lt;img src="images/PlaceholderImage.jpg"  width="2000" height="1000" alt="placeholder image"&gt;
+                &lt;h1&gt;This is a Row with Text on the Left using col-push and col-pull&lt;/h1&gt;
+                &lt;p&gt;This column is reading via the default normal view. Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dolorem nulla iusto, sed corrupti natus a officiis provident deserunt magni, facere accusantium ratione dolore voluptatem consequuntur. Asperiores iusto beatae cum!&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        </code></pre>
+        
+        <h2 id="typeblock">YJ Type Block</h2>
+        
+        <div class="yj-eyebrow">YJ Eyebrow</div>
+
+            <h3 class="yj-headline">YJ Custom Headline</h3>
+
+            <h4 class="yj-subheadline">YJ Custom SubHeadline</h4>
+
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus vero molestiae at accusantium ratione quasi nisi cupiditate iure dolores dolorem!</p>
+
+            <pre><code>
+    &lt;div class="yj-eyebrow"&gt;YJ Eyebrow&lt;/div&gt;
+
+    &lt;h3 class="yj-headline"&gt;YJ Custom Headline&lt;/h3&gt;
+
+    &lt;h4 class="yj-subheadline"&gt;YJ Custom SubHeadline&lt;/h4&gt;
+            </code></pre>
+            <hr>
+    </div>
+    <!-- The end of the container -->
+            
+
+            
             </div>
-                    </div>
-                </div>
-            </div>
+        </div>
+    </div>
         
             
         </section>
@@ -515,7 +581,7 @@
             </div>
             <div class="row">
                 <div class="col-6">
-                    <h2>About Simple Base</h2>
+                    <h2>About YJ Framework</h2>
                     <p>
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. A ipsa, nostrum eaque quis iste commodi voluptates veniam sapiente at? Dolores enim laborum odio obcaecati, dolor illum ut. Asperiores, error harum.
                     </p>
@@ -525,7 +591,7 @@
                     <nav>
                         <ul>
                             <li><a href="index.html">Home</a></li>
-                            <li><a href="documentation.html">Documentation</a></li>
+                            <li><a href="styleguide.html">Style Guide</a></li>
                         </ul>
                     </nav>
                 </div>

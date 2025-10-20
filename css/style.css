@@ -39,6 +39,7 @@ TABLE OF CONTENTS
 # CUSTOM SITE STYLING
     # BODY GRID LAYOUT SYSTEM (header, main, and footer)
     # STICKYBOX
+    # YJ TYPE BLOCK
 
 # ANIMATION
     # SMOOTH SCROLLING
@@ -761,6 +762,31 @@ html {
 .stickybox {
     position: sticky;
     top: var(--unit-medium);
+}
+
+/* YJ TYPE BLOCK */
+.yj-eyebrow {
+    font-size: .875rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    opacity: .5;
+    line-height: 1;
+}
+
+.yj-headline {
+    font-size: 2rem;
+    /* if use just margin, text will push from the left a little bit */
+    margin-block: var(--unit-xsmall);
+    line-height: 1.1;
+}
+
+.yj-subheadline {
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-style: italic;
+    margin-block: var(--unit-xsmall);
+    opacity: .7;
+    line-height: 1.2;
 }
 
 /* ---------------------------------------------------------------------
