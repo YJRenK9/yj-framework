@@ -250,7 +250,7 @@ body > * {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--color-rubine-red);
+    background-color: var(--color-teal);
     /* border-bottom: var(--border-thickness) solid var(--color-border);*/
     padding: var(--unit-small); 
     /* margin-bottom: var(--unit-medium); 
