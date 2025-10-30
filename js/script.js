@@ -61,3 +61,23 @@ window.onresize = () => {
     // removes the "data-menustate" attribute
     siteNav.removeAttribute("data-menustate");
 };
+
+// Scroll-triggered Animation
+// change active state for all target elements with intersection observer
+const myObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // element is within the webpage (onscreen)
+      entry.target.setAttribute("data-viewstate", "active");
+    } else {
+      // element is offscreen
+      entry.target.setAttribute("data-viewstate", "inactive");
+    }
+  });
+});
+
+const mytargets = document.querySelectorAll('.observe-me');
+mytargets.forEach(el => {
+  // observes the element that has the 'observe-me' class
+  myObserver.observe(el); 
+});

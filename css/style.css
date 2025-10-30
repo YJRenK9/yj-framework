@@ -43,6 +43,8 @@ TABLE OF CONTENTS
 
 # ANIMATION
     # SMOOTH SCROLLING
+    # REGULAR ON PAGE LOAD ANIMATIONS
+    # SCROLL-TRIGGERED ANIMATION
 
 # CUSTOM STYLING
     # BODY GRID LAYOUT SYSTEM (header, main, and footer)
@@ -250,9 +252,15 @@ body > * {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--color-teal);
+    background-color: transparent;
     /* border-bottom: var(--border-thickness) solid var(--color-border);*/
     padding: var(--unit-small); 
+    padding-inline: var(--unit-small);
+    gap: var(--unit-small);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
     /* margin-bottom: var(--unit-medium); 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
     flex-wrap: wrap;
@@ -311,7 +319,8 @@ body > * {
 }
 
 /* render header on top of hero */
-.site-header .on-top-of-hero {
+.site-header .on-top-of-hero + .site-main .hero-section {
+    padding-block-start: calc(var(--unit-2ex-large) + var(--unit-small));
     position: absolute;
     width: 100%;
     /* top: var(--unit-small);
@@ -353,23 +362,32 @@ body > * {
 }
 
 .site-main {
-    
+    background-color: transparent;
 }
 
-.site-main > .hero-section {
+/* .site-main > .hero-section {
     background-color: var(--color-yellow)
+} */
+
+.hero-section {
+    position: relative;
+    top: 0;
+    /* width: 100%; */
+    z-index: 1;
+    display: block;
+    background-color: var(--color-teal);
+    padding-block: var(--unit-2ex-large);
+    padding-inline: var(--unit-small);
 }
 
 .hero-section.site-footer:has(.container) {
     padding-inline: 0;
 }
 
-.hero-section h1 {
-
-}
-
 section {
     padding-block: var(--unit-large);
+    /* display: block; */
+    /* unicode-bidi: isolate; */
 }
 
 .site-footer {
@@ -418,7 +436,7 @@ a:hover {
 
 /* limit the number of characters per line for all paragraphs */
 p {
-    max-inline-size: 75ch;
+    max-inline-size: 66ch;
 }
 
 p, li {
@@ -839,4 +857,80 @@ html {
 .delay-1 { animation-delay: 0.1s; }
 .delay-2 { animation-delay: 0.2s; }
 .delay-3 { animation-delay: 0.3s; }
-.delay-4 { animation-delay: 0.4s; }
+.delay-4 { animation-delay: 0.5s; }
+.delay-5 { animation-delay: 0.7s; }
+.delay-6 { animation-delay: 0.9s; }
+
+/* SCROLL-TRIGGERED ANIMATIONS */
+
+/* fix scrollbar on all scroll animation sections */
+*:has(.observe-me) {
+    overflow-x: hidden;
+}
+
+.observe-me.onscroll-slide-in-from-left {
+    /* --duration: .5s;
+    --delay: .2s; */
+    opacity: 0;
+    translate: -20px 0;
+
+    /* complicated way */
+    /* transition: 
+        translate var(--duration) ease-out var(--delay), 
+        opacity var(--duration) linear var(--delay); */
+    /* create 2 separate ones, only the most recent transition will be applied */
+
+    /* better motion graphic design: do not ease opacity or it'll get visible pretty quickly */
+
+    /* simple way */
+    transition: all .5s ease-out .2s;
+}
+
+.observe-me.onscroll-slide-in-from-right {
+    opacity: 0;
+    translate: 20px 0;
+    transition: all .5s ease-out .2s;
+}
+
+.observe-me.onscroll-slide-in-from-top {
+    opacity: 0;
+    translate: 0 -20px;
+    transition: all .5s ease-out .2s;
+}
+
+.observe-me.onscroll-slide-in-from-bottom {
+    opacity: 0;
+    translate: 0 20px;
+    transition: all .5s ease-out .2s;
+}
+
+.observe-me[data-viewstate="active"].observe-me.onscroll-slide-in-from-left {
+    opacity: 1;
+    translate: 0 0;
+}
+
+.observe-me[data-viewstate="active"].observe-me.onscroll-slide-in-from-right {
+    opacity: 1;
+    translate: 0 0;
+}
+
+.observe-me[data-viewstate="active"].observe-me.onscroll-slide-in-from-top {
+    opacity: 1;
+    translate: 0 0;
+    overflow-y: hidden;
+}
+
+.observe-me[data-viewstate="active"].observe-me.onscroll-slide-in-from-bottom {
+    opacity: 1;
+    translate: 0 0;
+    overflow-y: hidden;
+}
+
+/* better than using the delay parameter in the transition property itself */
+.observe-me.delay-0 { transition-delay: 0s; }
+.observe-me.delay-1 { transition-delay: 0.1s; }
+.observe-me.delay-2 { transition-delay: 0.2s; }
+.observe-me.delay-3 { transition-delay: 0.3s; }
+.observe-me.delay-4 { transition-delay: 0.5s; }
+.observe-me.delay-5 { transition-delay: 0.7s; }
+.observe-me.delay-6 { transition-delay: 0.9s; }
